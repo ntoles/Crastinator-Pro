@@ -20,7 +20,7 @@ Special behavior can be configured for browsing "useful" sites, like gmail.
 
 To run, in Terminal type:
 
- chmod +x crastinator-pro.sh
+ chmod +x crastinator-pro.sh ;
  ./crastinator-pro.sh >/dev/null 2>&1 &
 
 And set your speaker volume to be nonzero.
