@@ -39,7 +39,7 @@ while true do
 
   if is_time_waster_app(app)
     phrase = RESPONSES[rand(RESPONSES.length)]
-    puts phrase
+    system("say #{phrase}")
   end
 
 end
