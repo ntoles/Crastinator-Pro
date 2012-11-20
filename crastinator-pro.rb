@@ -19,7 +19,7 @@ TIME_WASTER_APPS = [
 ]
 
 SLEEP_INTERVAL = 5
-
+counter = 1
 
 def current_app
   `osascript -e 'tell application "System Events"' -e 'set frontApp to name of first application process whose frontmost is true' -e 'end tell'`.chomp
@@ -38,8 +38,15 @@ while true do
   app = current_app
 
   if is_time_waster_app(app)
-    phrase = RESPONSES[rand(RESPONSES.length)]
-    system("say #{phrase}")
+    counter = counter + 1
+
+    if counter > 20 
+    	phrase = RESPONSES[rand(RESPONSES.length)]
+	system("say #{phrase}")
+    end
+
+  else
+    counter = 1 
   end
 
 end
