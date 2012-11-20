@@ -18,11 +18,16 @@ another application.
 
 Special behavior can be configured for browsing "useful" sites, like gmail.  
 
-To run, in Terminal type:
+To run the bash script, in Terminal type:
 
  chmod +x crastinator-pro.sh ;
  ./crastinator-pro.sh >/dev/null 2>&1 &
 
 And set your speaker volume to be nonzero.
 
+We now have the ruby version (thanks, Matt!); to invoke it use:
+
+ruby crastinator-pro.rb >/dev/null 2>&1 &
+
+Enjoy! 
 
