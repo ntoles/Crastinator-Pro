@@ -15,10 +15,10 @@ RESPONSES = [
 TIME_WASTER_APPS = [
     /Safari/,
     /Firefox/,
-    /Chrome/
+    /Google Chrome/
 ]
 
-SLEEP_INTERVAL = 1
+SLEEP_INTERVAL = 5
 
 
 def current_app
