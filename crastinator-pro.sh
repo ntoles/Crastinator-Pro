@@ -3,8 +3,8 @@
 # Send bug reports to anatoly@princeton.edu
 # Don't waste your life on stupid browsing!
 
-firstwarning=20 #120 #150 # seconds
-remindinterval=20 #60 # seconds
+firstwarning=120 #150 # seconds
+remindinterval=60 # seconds
 finaltime=360 #seconds; after this, harassment is non-stop. 
 interval=5  #how often to check the foreground app
 
