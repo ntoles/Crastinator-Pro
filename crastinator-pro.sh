@@ -3,15 +3,20 @@
 # Send bug reports to anatoly@princeton.edu
 # Don't waste your life on stupid browsing!
 
-firstwarning=120 #150 # seconds
-remindinterval=60 # seconds
+firstwarning=20 #120 #150 # seconds
+remindinterval=20 #60 # seconds
 finaltime=360 #seconds; after this, harassment is non-stop. 
 interval=5  #how often to check the foreground app
 
 #Canned responses. Should be increasingly off-the-wall. 
 responses=([1]="Stop procrastinating" [2]="You are wasting your time" [3]="Allright, back to work!" [4]="You could be working right now" [5]="Be productive!" [6]="Take a break" [7]="Beep!" [8]="Be-beep!" [9]="Stop it!")
 
+#voices
+voices=([1]="Alex" [2]="Vicki" [3]="Trinoids" [4]="Whisper" [5]="Cellos")
+
 maxphrases=${#responses[@]}
+maxvoices=${#voices[@]}
+
 counter=0
 selection=3 # choose from first $selection phrases in the beginning, 
             # increase selection with time
@@ -24,7 +29,7 @@ sleep $interval
 #get the name of the foreground application
 a=`osascript -e 'tell application "System Events"' -e 'set frontApp to name of first application process whose frontmost is true' -e 'end tell'`
 
-echo "Foreground app is " $a
+#echo "Foreground app is " $a
 
 if [ "$a" = "Safari" -o "$a" = "Firefox" -o "$a" = "Google Chrome" ]; then 
 let "counter=counter+1"
@@ -52,18 +57,20 @@ if [ $time -ge $firstwarning -a $(( ( time - firstwarning ) % remindinterval )) 
     let "selection=( $selection + 1)"
 
     if [ $selection -gt $maxphrases ]; then 
-	selection=maxphrases
+	selection=$maxphrases
     fi
 
     let "phrasenumber=( $RANDOM % $selection  + 1)"
     phrase=${responses[$phrasenumber]}
 
-#    echo letgo $letgo $time $finaltime about to speak
+    let "voicenumber=( $RANDOM % $maxvoices + 1)"
+    voice=${voices[$voicenumber]}
 
     if [ $letgo -ne 1 -o $time -gt $finaltime ]; then 
+
 #skip initial warnings to allow longer email checking; 
 #still bug user if they are sitting too long at the email 
-	say $phrase
+	say -v $voice $phrase
     fi
 fi    
 
