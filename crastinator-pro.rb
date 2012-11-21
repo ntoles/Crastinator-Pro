@@ -1,5 +1,11 @@
 #!/usr/bin/env ruby
 
+FIRST_WARNING = 120
+REMIND_INTERVAL = 60 
+SLEEP_INTERVAL = 5
+NONSTOP_TIME = 360
+counter = 1
+
 RESPONSES = [
   "Stop procrastinating",
   "You are wasting your time",
@@ -12,14 +18,19 @@ RESPONSES = [
   "Stop it!"
 ]
 
+VOICES = [
+  "Alex", 
+  "Vicki", 
+  "Trinoids", 
+  "Whisper", 
+  "Cellos"
+]
+
 TIME_WASTER_APPS = [
     /Safari/,
     /Firefox/,
     /Google Chrome/
 ]
-
-SLEEP_INTERVAL = 5
-counter = 1
 
 def current_app
   `osascript -e 'tell application "System Events"' -e 'set frontApp to name of first application process whose frontmost is true' -e 'end tell'`.chomp
@@ -39,10 +50,12 @@ while true do
 
   if is_time_waster_app(app)
     counter = counter + 1
+    time = counter*SLEEP_INTERVAL
 
-    if counter > 20 
+    if time >= FIRST_WARNING && (time - FIRST_WARNING) % REMIND_INTERVAL == 0 || time > NONSTOP_TIME
     	phrase = RESPONSES[rand(RESPONSES.length)]
-	system("say #{phrase}")
+	voice = VOICES[rand(VOICES.length)]
+	system("say -v #{voice} #{phrase}")
     end
 
   else
