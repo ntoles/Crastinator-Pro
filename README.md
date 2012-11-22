@@ -28,7 +28,9 @@ And set your speaker volume to be nonzero.
 We now have the ruby version (thanks, Matt!); to invoke it use:
 
 ruby crastinator-pro.rb >/dev/null 2>&1 &
+
 or, 
+
 chmod +x crastinator-pro.rb ; 
 ./crastinator-pro.rb >/dev/null 2>&1 &
 
