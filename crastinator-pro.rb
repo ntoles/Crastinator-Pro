@@ -60,7 +60,6 @@ end
 
 def is_permitted_site(site)
     PERMITTED_SITES.each do |permitted|
-    puts "permitted", permitted
     	return true if site =~ permitted
     end
     false
@@ -85,10 +84,10 @@ while true do
 
 	if is_permitted_site(site)
           if (time - FIRST_WARNING) % 300 == 0 
-            system("say -v #{voice} five minutes")
+            system("say -v #{voice} five minutes &")
           end
 	else
-		system("say -v #{voice} #{phrase}")
+		system("say -v #{voice} #{phrase} &")
 	end
     end
 
