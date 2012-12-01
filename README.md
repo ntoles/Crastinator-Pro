@@ -41,6 +41,8 @@ If you want to tweak Crastinator Pro, or want to help
 develop it, then download the source scripts from github. 
 There is a bash and Ruby version. Ruby version is recommended. 
 
+https://github.com/ntoles/Crastinator-Pro
+
 NOTE: the scripts work only on Macs, as they use 
 features of OS X, that are not available on linux. 
 
@@ -59,6 +61,9 @@ or,
 
 chmod +x crastinator-pro.rb ; 
 ./crastinator-pro.rb >/dev/null 2>&1 &
+
+The binary app is made using Platypus 
+http://sveinbjorn.org/platypus
 
 Enjoy! 
 
