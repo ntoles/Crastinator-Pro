@@ -23,14 +23,15 @@ PERMITTED_SITES = [
 
 RESPONSES = [
   "Stop procrastinating",
-  "You are wasting your time",
+  "Stop wasting your time",
   "Allright, back to work!",
   "You could be working right now",
   "Be productive!",
   "Take a break",
   "Beep!",
   "Be-beep!",
-  "Stop it!"
+  "Stop it!",
+  "Be-be-beep!"
 ]
 
 VOICES = [
@@ -73,7 +74,8 @@ while true do
   if is_time_waster_app(app)
     counter = counter + 1
     time = counter*SLEEP_INTERVAL
-
+#    puts time
+#    $stdout.flush
     site = current_site(app)
     
     if time >= FIRST_WARNING && 
